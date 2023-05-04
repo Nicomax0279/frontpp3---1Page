@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient   } from '@angular/common/http'
 import {  Observable} from "rxjs";
 import { loginUser } from '../interfaces/loginUser';
-
+import { user } from "../interfaces/user";
 @Injectable({
   providedIn: 'root'
 })
@@ -16,5 +16,8 @@ export class AuthServiceService {
   }
   logout(user:loginUser):Observable<any>{
     return this.http.post(`${this.route}/logout`,user)
+  }
+  singup(user:user):Observable<any>{
+    return this.http.post(`${this.route}/singup`,user)
   }
 }

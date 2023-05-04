@@ -10,6 +10,7 @@ import { MainComponent } from './components/main/main.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { OfferComponent } from './components/main/offer/offer.component';
 import { OffersComponent } from './components/main/offers/offers.component';
+import { SingupComponent } from './singup/singup.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { OffersComponent } from './components/main/offers/offers.component';
     NavBarComponent,
     OfferComponent,
     OffersComponent,
+    SingupComponent,
     
   ],
   imports: [
