@@ -3,8 +3,8 @@
   
     <div class="login">
      
-     <img src="./../../../assets/img/lupa.png" width="50%">
-     <h1>Login</h1>
+     <img src="./../../../assets/img/lupa.png" width="20%">
+     <h1>Singup</h1>
      <form   [formGroup]="form" (ngSubmit)="singup()">
      <mat-form-field class="ancho" appearance="fill" >
          <mat-label>email</mat-label>
@@ -22,6 +22,18 @@
         <mat-label>surname</mat-label>
         <input matInput autocomplete="off" formControlName="surname">
       </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="birthdate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="ancho" appearance="fill">
+        <mat-label>carrer</mat-label>
+        <input matInput autocomplete="off" formControlName="carrer">
+      </mat-form-field>
+
        <br>
        <button type="submit" mat-raised-button color="primary" class="ancho button" [disabled]="form.invalid">Ingresar</button>
      </form>

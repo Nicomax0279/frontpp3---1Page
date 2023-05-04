@@ -7,7 +7,7 @@ import { user } from "../interfaces/user";
   providedIn: 'root'
 })
 export class AuthServiceService {
-  route = "http://localhost:8080"
+  route = "http://localhost:8080/api/auth"
   constructor(private http:HttpClient ){}
 
 
