@@ -1,0 +1,7 @@
+.offers-container{
+    width: 400px;
+    margin: auto;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+}
