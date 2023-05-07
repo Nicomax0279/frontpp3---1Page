@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup,Validators } from '@angular/forms';
+import { EmailValidator, FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { Router } from "@angular/router";
 import { Subscriber, Subscription } from 'rxjs';
 import { subscriptionLogsToBeFn } from 'rxjs/internal/testing/TestScheduler';
@@ -16,9 +16,11 @@ import { LocalStorageServiceService } from 'src/app/services/local-storage-servi
 export class LoginComponent {
   form:FormGroup
   loading = false
+
+  
   constructor(private fb:FormBuilder ,private router:Router, private _authService:AuthServiceService, private _LocalStorageServiceService:LocalStorageServiceService){
     this.form = this.fb.group({
-      user: ["" , [Validators.email,Validators.required]  ],
+      user: ["@itbeltran.com.ar" , [Validators.email,Validators.required]  ],
       password: ["" , Validators.required ],
     })
 
@@ -28,6 +30,9 @@ export class LoginComponent {
     const loginUser:loginUser ={
       username : this.form.value.user,
       password : this.form.value.password
+    }
+    if(!this.validateEmail(loginUser.username)){
+      alert("the email must contain @itbeltran.com.ar")
     }
     this.sus = this._authService.login(loginUser).subscribe({next: (res)=>{
       if(res.token){
@@ -40,13 +45,17 @@ export class LoginComponent {
         console.log(err)
     },})
   }
-validateEmail(email:string){
-  
+  validateEmail(email:String){
+    email = email.toLowerCase()
+    return email.includes("@itbeltran.com.ar")
   }
 
   
 ngOnDestroy(){
- this.sus.unsubscribe()
+  if(this.sus){
+    this.sus.unsubscribe()
+  }
+
 }
 
 

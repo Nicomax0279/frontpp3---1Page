@@ -18,7 +18,7 @@ export class SingupComponent {
     loading = false
     constructor(private fb:FormBuilder ,private router:Router, private _authService:AuthServiceService , private _LocalStorageServiceService:LocalStorageServiceService){
       this.form = this.fb.group({
-        user: ["" , [Validators.email,Validators.required]  ],
+        user: ["@itbeltran.com.ar" , [Validators.email,Validators.required]  ],
         password: ["" , Validators.required ],
         name: ["" , Validators.required ],
         surname: ["" , Validators.required ],
@@ -50,7 +50,9 @@ export class SingupComponent {
       },})
     }
     ngOnDestroy(){
-      this.sus.unsubscribe()
+      if(this.sus){
+        this.sus.unsubscribe()
+      }
     }
   }
   

@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 export class LocalStorageServiceService {
 
   constructor() { }
-  setToken(Token : JsonWebKey){
+  setToken(Token:string){
     localStorage.setItem('token',  JSON.stringify(Token))
   }
   getToken(){

@@ -20,4 +20,7 @@ export class AuthServiceService {
   singup(user:user):Observable<any>{
     return this.http.post(`${this.route}/singup`,user)
   }
+  validate():Observable<boolean>{
+    return this.http.post<boolean>(`${this.route}/validate`,{})
+  }
 }
