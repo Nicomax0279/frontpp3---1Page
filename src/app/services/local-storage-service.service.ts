@@ -21,5 +21,16 @@ export class LocalStorageServiceService {
   }
 
 
+  setUsername(username:string){
+    localStorage.setItem('username',  JSON.stringify(username))
+  }
+  getUsername(){
+    //@ts-ignore
+    return JSON.parse(localStorage.getItem('username'));
+  }
+  destroyUsername(){
+    localStorage.removeItem("username")
+  }
+
 
 }

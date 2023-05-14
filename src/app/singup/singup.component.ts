@@ -41,6 +41,7 @@ export class SingupComponent {
       this.sus = this._authService.singup(singupUser).subscribe({next: (res)=>{
         if(res.token){
           this._LocalStorageServiceService.setToken(res.token)
+          this._LocalStorageServiceService.setUsername(singupUser.username)
           this.router.navigate(["main"])
         }else{
           alert("ocurrio un error");

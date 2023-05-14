@@ -19,16 +19,19 @@
           </mat-card-content>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="3" >
-        <mat-card-actions>
-            <button mat-raised-button  color="primary">Ver Mas</button>            
+        <mat-card-actions *ngIf="!showMore">
+            <button mat-raised-button  color="primary" (click)="showMore=true">Ver Mas</button>            
         </mat-card-actions>
     </mat-grid-tile>
     
 </mat-grid-list>
-<mat-grid-list *ngIf="showMoere" cols="5"  rowHeight="25px">
+<mat-grid-list *ngIf="showMore" cols="5"  rowHeight="25px">
 
+    <mat-grid-tile [colspan]="5" [rowspan]="3">
 
-
+        <button mat-raised-button  color="primary" (click)="showMore=false">Ocultar</button>  
+    </mat-grid-tile>
+               
 </mat-grid-list>
 
 

@@ -12,6 +12,7 @@ export class AuthServiceService {
 
 
   login(user:loginUser):Observable<any>{
+
     return this.http.post(`${this.route}/login`,user)
   }
   logout(user:loginUser):Observable<any>{
@@ -20,7 +21,7 @@ export class AuthServiceService {
   singup(user:user):Observable<any>{
     return this.http.post(`${this.route}/singup`,user)
   }
-  validate():Observable<boolean>{
-    return this.http.post<boolean>(`${this.route}/validate`,{})
+  validate(body:{token:string,username:string}):Observable<boolean>{
+    return this.http.post<boolean>(`${this.route}/verifies`,body)
   }
 }

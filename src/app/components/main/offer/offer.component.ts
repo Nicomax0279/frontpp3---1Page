@@ -9,6 +9,6 @@ import { offer } from 'src/app/interfaces/offer';
 export class OfferComponent {
   @Input() offer !: offer
 
-  showMoere:boolean = false
+  showMore:boolean = false
 
 }
