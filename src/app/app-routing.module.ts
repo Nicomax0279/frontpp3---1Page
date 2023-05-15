@@ -3,13 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { OffersComponent } from './components/main/offers/offers.component';
-import { SingupComponent } from './singup/singup.component';
+import { SignupComponent } from './components/signup/signup.component';
 import { TokenValidGuard } from './guards/token-valid.guard';
 
 
 const routes: Routes = [
   {path:'' , redirectTo: "login" , pathMatch: 'full'},
-  {path:'singup' , component:SingupComponent},
+  {path:'signup' , component:SignupComponent},
  {path:'login' , component:LoginComponent},
  {path:'main', component:MainComponent, canActivate:[TokenValidGuard],
  children:[

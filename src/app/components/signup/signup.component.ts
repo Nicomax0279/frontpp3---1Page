@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthServiceService } from '../services/auth-service.service';
-import { user } from '../interfaces/user';
-import { LocalStorageServiceService } from '../services/local-storage-service.service';
+import { AuthServiceService } from '../../services/auth-service.service';
+import { user } from '../../interfaces/user';
+import { LocalStorageServiceService } from '../../services/local-storage-service.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-singup',
-  templateUrl: './singup.component.html',
-  styleUrls: ['./singup.component.css']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
 
-export class SingupComponent {
+export class SignupComponent {
   form!:FormGroup
     loading = false
     constructor(private fb:FormBuilder ,private router:Router, private _authService:AuthServiceService , private _LocalStorageServiceService:LocalStorageServiceService){
@@ -38,7 +38,7 @@ export class SingupComponent {
         carrer : this.form.value.carrer 
       
       }
-      this.sus = this._authService.singup(singupUser).subscribe({next: (res)=>{
+      this.sus = this._authService.signup(singupUser).subscribe({next: (res)=>{
         if(res.token){
           this._LocalStorageServiceService.setToken(res.token)
           this._LocalStorageServiceService.setUsername(singupUser.username)

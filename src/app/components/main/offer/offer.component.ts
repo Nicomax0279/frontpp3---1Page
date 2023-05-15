@@ -1,5 +1,5 @@
 import { Component , Input } from '@angular/core';
-import { offer } from 'src/app/interfaces/offer';
+import { offer } from '../../../interfaces/offer';
 
 @Component({
   selector: 'app-offer',
@@ -10,5 +10,8 @@ export class OfferComponent {
   @Input() offer !: offer
 
   showMore:boolean = false
-
+  signupOffert(){
+    console.log(this.offer)
+    alert(`incribirse a  , ${this.offer.id}`)
+  }
 }
