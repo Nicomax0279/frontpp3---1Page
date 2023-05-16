@@ -21,7 +21,7 @@ export class AuthServiceService {
   signup(user:user):Observable<any>{
     return this.http.post(`${this.route}/signup`,user)
   }
-  validate(body:{token:string,username:string}):Observable<boolean>{
-    return this.http.post<boolean>(`${this.route}/verifies`,body)
+  validate(token:string):Observable<boolean>{
+    return this.http.post<boolean>(`${this.route}/verifies`,`Bearer ${token}`)
   }
 }
