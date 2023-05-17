@@ -10,7 +10,17 @@ export class OfferService {
   route = "http://localhost:8080/api/offer"
   constructor(private http:HttpClient){}
   
-
+processParamsObject(paramsObject:any){
+  const paramsArray = [];
+for (let param in paramsObject) {
+  if (paramsObject.hasOwnProperty(param)) {
+    const value = paramsObject[param];
+    const elemento = { param, value };
+    paramsArray.push(elemento);
+  }
+}
+return paramsArray
+}
 
 
 
@@ -42,18 +52,28 @@ getOptions() {
 
 
 
-getOffer() {
-  // Usar el método get del HttpClient para enviar una petición GET a la URL base con las opciones del método getOptions()
+getOffers() {
   return this.http.get<offer[]>(this.route, this.getOptions());
 }
 
-// Definir un método para obtener un alumno por su nombre
-getOffert(id:number) {
-  // Usar el método get del HttpClient para enviar una petición GET a la URL base con el nombre como parámetro y las opciones del método getOptions()
+
+getOffertById(id:number) {
+
   return this.http.get<offer>(`${this.route}/${id}`, this.getOptions());
 }
 
 
+getOffersParams(params:Object) {
+
+
+  const paramsArray = this.processParamsObject(params)
+  let paramsUrl:string = ''
+  paramsArray.forEach(e=>{
+    paramsUrl += `${e.param}=${e.value}&`
+  })
+
+  return this.http.get<offer[]>(`${this.route}${paramsUrl}`, this.getOptions());
+}
 
 
 
