@@ -11,6 +11,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { OfferComponent } from './components/main/offer/offer.component';
 import { OffersComponent } from './components/main/offers/offers.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileCardComponent } from './components/profile/profile-card/profile-card.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { SignupComponent } from './components/signup/signup.component';
     NavBarComponent,
     OfferComponent,
     OffersComponent,
-    SignupComponent
+    SignupComponent,
+    ProfileComponent,
+    ProfileCardComponent
     
   ],
   imports: [
