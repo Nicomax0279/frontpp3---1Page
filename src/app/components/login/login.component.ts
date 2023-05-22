@@ -47,9 +47,11 @@ export class LoginComponent {
         console.log(err)
     },})}
   }
-  validateEmail(email:String){
-    email = email.toLowerCase()
-    return email.includes("@itbeltran.com.ar")
+  validateEmail(email:String){   
+      var dominio = "@itbentral.com.ar";
+      return email.endsWith(dominio)
+    // email = email.toLowerCase()
+    // return email.includes("@itbeltran.com.ar")
   }
 
   

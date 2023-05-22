@@ -59,9 +59,9 @@ export class SignupComponent {
         this.sus.unsubscribe()
       }
     }
-    validateEmail(email:String){
-      email = email.toLowerCase()
-      return email.includes("@itbeltran.com.ar")
+    validateEmail(email:String){   
+      var dominio = "@itbentral.com.ar";
+      return email.endsWith(dominio)
     }
   }
   

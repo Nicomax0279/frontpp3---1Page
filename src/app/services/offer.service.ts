@@ -52,12 +52,12 @@ getOptions() {
 
 
 
-getOffers() {
+getOffers():Observable<offer[]> {
   return this.http.get<offer[]>(this.route, this.getOptions());
 }
 
 
-getOffertById(id:number) {
+getOffertById(id:number):Observable<offer> {
 
   return this.http.get<offer>(`${this.route}/${id}`, this.getOptions());
 }
@@ -75,11 +75,17 @@ getOffersParams(params:Object) {
   return this.http.get<offer[]>(`${this.route}${paramsUrl}`, this.getOptions());
 }
 
+postOffer(offer:offer){
+  return this.http.post<offer>(this.route,offer, this.getOptions());
+}
 
-
-
-
-
-
-
+signupOffer(offerId:number){
+  return this.http.post<offer>(`${this.route}/signup`,offerId, this.getOptions());
+}
+isSingupOffer(offerId:number){
+  return this.http.post<offer>(`${this.route}/isSignup`,offerId, this.getOptions());
+}
+getMySignupOffers(){
+  return this.http.get<offer[]>(`${this.route}/myOffers`, this.getOptions());
+}
 }
