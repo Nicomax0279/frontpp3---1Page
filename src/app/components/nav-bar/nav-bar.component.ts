@@ -12,9 +12,10 @@ import { LocalStorageServiceService } from 'src/app/services/local-storage-servi
 })
 export class NavBarComponent {
 
-  menu:Menu[] = [{
-    name:"login" , redirect:'/login'
-  }];
+  menu:Menu[] = [
+    {name:"HOME" , redirect:'/main'},
+    {name:"Profile" , redirect:'/main/profile'}
+];
  
   constructor(private _LocalStorageServiceService:LocalStorageServiceService, private router:Router){
 

@@ -1,0 +1,7 @@
+.profile-container{
+    width: 1000px;
+    margin: auto;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+}

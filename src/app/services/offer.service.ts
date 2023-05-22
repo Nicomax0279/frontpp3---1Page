@@ -40,7 +40,7 @@ getToken() {
 
 getOptions() {
   
-  let token = this.getToken();
+  let token = JSON.parse(this.getToken());
   let headers = new HttpHeaders({
     Authorization: `Bearer ${token}`,
   });
@@ -67,7 +67,7 @@ getOffersParams(params:Object) {
 
 
   const paramsArray = this.processParamsObject(params)
-  let paramsUrl:string = ''
+  let paramsUrl:string = '?'
   paramsArray.forEach(e=>{
     paramsUrl += `${e.param}=${e.value}&`
   })

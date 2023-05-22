@@ -14,7 +14,7 @@ const routes: Routes = [
  {path:'login' , component:LoginComponent},
  {path:'main', component:MainComponent, canActivate:[TokenValidGuard],
  children:[
-  {path:'' , component:OffersComponent}
+  {path:'' , component:OffersComponent},
   {path:'profile', component:ProfileComponent}
  ]}]
 ;

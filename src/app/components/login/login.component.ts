@@ -33,7 +33,7 @@ export class LoginComponent {
     }
     if(!this.validateEmail(loginUser.username)){
       alert("the email must contain @itbeltran.com.ar")
-    }
+    }else{
     this.sus = this._authService.login(loginUser).subscribe({next: (res)=>{
       if(res.token){
         this._LocalStorageServiceService.setToken(res.token)
@@ -45,7 +45,7 @@ export class LoginComponent {
       }
     },error(err:HttpErrorResponse) {
         console.log(err)
-    },})
+    },})}
   }
   validateEmail(email:String){
     email = email.toLowerCase()

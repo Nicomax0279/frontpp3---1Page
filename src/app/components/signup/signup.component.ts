@@ -23,10 +23,11 @@ export class SignupComponent {
         name: ["" , Validators.required ],
         surname: ["" , Validators.required ],
         birthdate :  ["" , Validators.required ],
-        carrer :["" , Validators.required ]
+        career :["" , Validators.required ]
       }) 
   
     }
+ 
     sus!:Subscription;
     singup(){
       const singupUser:user ={
@@ -35,9 +36,12 @@ export class SignupComponent {
         name : this.form.value.name,
         surname : this.form.value.surname,
         birthdate : this.form.value.birthdate,
-        carrer : this.form.value.carrer 
+        career : this.form.value.career 
       
       }
+      if(!this.validateEmail(singupUser.username)){
+        alert("the email must contain @itbeltran.com.ar")
+      }else{
       this.sus = this._authService.signup(singupUser).subscribe({next: (res)=>{
         if(res.token){
           this._LocalStorageServiceService.setToken(res.token)
@@ -48,12 +52,16 @@ export class SignupComponent {
         }
       },error(err:HttpErrorResponse) {
           console.log(err)
-      },})
+      },})}
     }
     ngOnDestroy(){
       if(this.sus){
         this.sus.unsubscribe()
       }
+    }
+    validateEmail(email:String){
+      email = email.toLowerCase()
+      return email.includes("@itbeltran.com.ar")
     }
   }
   
