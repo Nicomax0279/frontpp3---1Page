@@ -60,7 +60,7 @@ export class SignupComponent {
       }
     }
     validateEmail(email:String){   
-      var dominio = "@itbentral.com.ar";
+      var dominio = "@itbeltran.com.ar";
       return email.endsWith(dominio)
     }
   }

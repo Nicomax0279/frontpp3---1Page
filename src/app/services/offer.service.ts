@@ -6,8 +6,8 @@ import {offer} from '../interfaces/offer'
   providedIn: 'root'
 })
 export class OfferService {
-
-  route = "http://localhost:8080/api/offer"
+  route = "http://localhost:8080/api/offer/"
+  
   constructor(private http:HttpClient){}
   
 processParamsObject(paramsObject:any){
@@ -28,11 +28,10 @@ return paramsArray
 getToken() {
   
   let token = localStorage.getItem("token");
-  
+
   if (token) {
     return token;
   } else {
-   
     return "";
   }
 }
@@ -40,16 +39,16 @@ getToken() {
 
 getOptions() {
   
-  let token = JSON.parse(this.getToken());
-  let headers = new HttpHeaders({
-    Authorization: `Bearer ${token}`,
-  });
+  let token = this.getToken();
+  console.log(token)
+	
+  let headers = new HttpHeaders({'Authorization': 'Bearer ' + token})
+  
   let options = {
-    headers: headers,
+    headers: headers
   };
-  return options;
+  return options
 }
-
 
 
 getOffers():Observable<offer[]> {
@@ -59,7 +58,7 @@ getOffers():Observable<offer[]> {
 
 getOffertById(id:number):Observable<offer> {
 
-  return this.http.get<offer>(`${this.route}/${id}`, this.getOptions());
+  return this.http.get<offer>(`${this.route}${id}`, this.getOptions());
 }
 
 
@@ -80,12 +79,12 @@ postOffer(offer:offer){
 }
 
 signupOffer(offerId:number){
-  return this.http.post<offer>(`${this.route}/signup`,offerId, this.getOptions());
+  return this.http.post<offer>(`${this.route}signup`,offerId, this.getOptions());
 }
 isSingupOffer(offerId:number){
-  return this.http.post<offer>(`${this.route}/isSignup`,offerId, this.getOptions());
+  return this.http.post<offer>(`${this.route}isSignup`,offerId, this.getOptions());
 }
 getMySignupOffers(){
-  return this.http.get<offer[]>(`${this.route}/myOffers`, this.getOptions());
+  return this.http.get<offer[]>(`${this.route}myOffers`, this.getOptions());
 }
 }

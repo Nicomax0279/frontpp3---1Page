@@ -48,7 +48,7 @@ export class LoginComponent {
     },})}
   }
   validateEmail(email:String){   
-      var dominio = "@itbentral.com.ar";
+      var dominio = "@itbeltran.com.ar";
       return email.endsWith(dominio)
     // email = email.toLowerCase()
     // return email.includes("@itbeltran.com.ar")
