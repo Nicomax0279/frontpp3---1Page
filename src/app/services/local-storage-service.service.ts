@@ -10,11 +10,12 @@ export class LocalStorageServiceService {
 
   constructor() { }
   setToken(Token:string){
-    localStorage.setItem('token',  JSON.stringify(Token))
+    localStorage.setItem('token',  Token)
   }
   getToken(){
     //@ts-ignore
-    return JSON.parse(localStorage.getItem('token'));
+    
+    return localStorage.getItem('token');
   }
   destroyToken(){
     localStorage.removeItem("token")
@@ -22,11 +23,11 @@ export class LocalStorageServiceService {
 
 
   setUsername(username:string){
-    localStorage.setItem('username',  JSON.stringify(username))
+    localStorage.setItem('username',  username)
   }
   getUsername(){
     //@ts-ignore
-    return JSON.parse(localStorage.getItem('username'));
+    return localStorage.getItem('username');
   }
   destroyUsername(){
     localStorage.removeItem("username")

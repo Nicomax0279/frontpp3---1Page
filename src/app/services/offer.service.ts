@@ -30,7 +30,7 @@ getToken() {
   let token =localStorage.getItem("token");
 
   if (token) {
-    return JSON.parse(token);
+    return token;
   } else {
     return "";
   }

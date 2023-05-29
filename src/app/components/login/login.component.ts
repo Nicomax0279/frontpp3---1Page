@@ -35,7 +35,9 @@ export class LoginComponent {
       alert("the email must contain @itbeltran.com.ar")
     }else{
     this.sus = this._authService.login(loginUser).subscribe({next: (res)=>{
+      
       if(res.token){
+       
         this._LocalStorageServiceService.setToken(res.token)
         this._LocalStorageServiceService.setUsername(loginUser.username)
         
