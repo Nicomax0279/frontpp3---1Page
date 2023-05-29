@@ -27,10 +27,10 @@ return paramsArray
 
 getToken() {
   
-  let token = localStorage.getItem("token");
+  let token =localStorage.getItem("token");
 
   if (token) {
-    return token;
+    return JSON.parse(token);
   } else {
     return "";
   }
