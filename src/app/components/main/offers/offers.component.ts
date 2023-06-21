@@ -1,7 +1,8 @@
-import { getLocaleEraNames } from '@angular/common';
-import { Component } from '@angular/core';
+
+import { Component, Input } from '@angular/core';
 import { offer } from 'src/app/interfaces/offer';
 import { OfferService } from 'src/app/services/offer.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-offers',
@@ -9,6 +10,7 @@ import { OfferService } from 'src/app/services/offer.service';
   styleUrls: ['./offers.component.css']
 })
 export class OffersComponent {
+  @Input() params!:string
   offers!:offer[]
   constructor(
     private _OfferService:OfferService
@@ -16,12 +18,13 @@ export class OffersComponent {
 
   }
   ngOnInit(){
-    this._OfferService.getOffers().subscribe({
+    this._OfferService.getOffersParams(this.params).subscribe({
       next: (e)=> this.offers = e,
       error: (error)=>console.log(error)  
     })
-
   }
+ 
+
 //   offers:offer[] = [
 // {id:1, modality:"presencial" ,title:"Buscamos enfermero", company:"clinica cityGost"
 // ,description:"Estamos buscando enfermeras/os altamente motivados y comprometidos para unirse a nuestro equipo en la clinica cityGost. Como enfermera/o serás responsable de proporcionar atención y cuidado de calidad a los pacientes" 

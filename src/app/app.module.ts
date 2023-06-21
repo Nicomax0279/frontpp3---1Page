@@ -13,6 +13,12 @@ import { OffersComponent } from './components/main/offers/offers.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileCardComponent } from './components/profile/profile-card/profile-card.component';
+import { LayoutComponent } from './company/layout/layout.component';
+import { NavCompanyComponent } from './company/nav-company/nav-company.component';
+import { CreateOfferComponent } from './company/CreateOffer/crate-offert.component';
+import { ImgNotFoundDirective } from './img-not-found.directive';
+import { UpdateDialogComponent } from './components/profile/update-dialog/update-dialog.component';
+import { CompanyMainComponent } from './company/company-main/company-main.component';
 
 
 @NgModule({
@@ -25,7 +31,13 @@ import { ProfileCardComponent } from './components/profile/profile-card/profile-
     OffersComponent,
     SignupComponent,
     ProfileComponent,
-    ProfileCardComponent
+    ProfileCardComponent,
+    LayoutComponent,
+    NavCompanyComponent,
+    CreateOfferComponent,
+    ImgNotFoundDirective,
+    UpdateDialogComponent,
+    CompanyMainComponent
     
   ],
   imports: [

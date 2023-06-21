@@ -12,9 +12,13 @@ import { Subscription } from 'rxjs';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-
+ 
 export class SignupComponent {
   form!:FormGroup
+  careers:string[] = [
+    'Analista de sistemas' , 'Emfermeria', 'Radiologia','Seguridad y Higiene', "Administracion de empresas"
+  ]
+
     loading = false
     constructor(private fb:FormBuilder ,private router:Router, private _authService:AuthServiceService , private _LocalStorageServiceService:LocalStorageServiceService){
       this.form = this.fb.group({
@@ -36,8 +40,9 @@ export class SignupComponent {
         name : this.form.value.name,
         surname : this.form.value.surname,
         birthdate : this.form.value.birthdate,
-        career : this.form.value.career 
-      
+        career : this.form.value.career,
+        description: '' 
+
       }
       if(!this.validateEmail(singupUser.username)){
         alert("the email must contain @itbeltran.com.ar")
@@ -47,7 +52,10 @@ export class SignupComponent {
           this._LocalStorageServiceService.setToken(res.token)
           this._LocalStorageServiceService.setUsername(singupUser.username)
           this.router.navigate(["main"])
-        }else{
+        }else if(res.Response == "signup successfully"){
+          alert("Cuenta Registrada correctamente")
+        }
+        else{
           alert("ocurrio un error");
         }
       },error(err:HttpErrorResponse) {

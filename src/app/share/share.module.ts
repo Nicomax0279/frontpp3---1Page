@@ -11,7 +11,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-
+import {MatSelectModule} from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   declarations: [],
   imports: [
@@ -27,7 +28,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatCardModule,
     MatGridListModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule,
+    MatDialogModule
   ],
   exports:[
     MatFormFieldModule,
@@ -41,7 +44,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatCardModule,
     MatGridListModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule,
+    MatDialogModule
   ]
 })
 export class ShareModule { }

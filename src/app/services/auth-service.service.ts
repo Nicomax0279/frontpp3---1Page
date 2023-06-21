@@ -3,11 +3,12 @@ import {HttpClient   } from '@angular/common/http'
 import {  Observable} from "rxjs";
 import { loginUser } from '../interfaces/loginUser';
 import { user } from "../interfaces/user";
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
-  route = "http://localhost:8080/api/auth"
+  route = `${environment.BASEURL}/api/auth`
   constructor(private http:HttpClient ){}
 
 
@@ -22,7 +23,8 @@ export class AuthServiceService {
     return this.http.post(`${this.route}/signup`,user)
   }
   validate(token:string):Observable<boolean>{
-    return this.http.post<boolean>(`${this.route}/verifies`, `Bearer ${token}`)
-    //return this.http.post<boolean>(`${this.route}/verifies`, {token:`Bearer ${token}`})
+    //return this.http.post<boolean>(`${this.route}/verifies`, `Bearer ${token}`)
+    console.log("cambio en auth service")
+    return this.http.post<boolean>(`${this.route}/verifies`, {token:`Bearer ${token}`})
   }
 }

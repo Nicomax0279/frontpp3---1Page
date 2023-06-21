@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders   } from '@angular/common/http'
 import {  Observable} from "rxjs";
 import {offer} from '../interfaces/offer'
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class OfferService {
-  route = "http://localhost:8080/api/offer/"
+  route = `${environment.BASEURL}/api/offer/`
   
   constructor(private http:HttpClient){}
   
@@ -40,7 +41,7 @@ getToken() {
 getOptions() {
   
   let token = this.getToken();
-  console.log(token)
+
 	
   let headers = new HttpHeaders({'Authorization': 'Bearer ' + token})
   
@@ -62,16 +63,17 @@ getOffertById(id:number):Observable<offer> {
 }
 
 
-getOffersParams(params:Object) {
+getOffersParams(params:string) {
 
 
-  const paramsArray = this.processParamsObject(params)
-  let paramsUrl:string = '?'
-  paramsArray.forEach(e=>{
-    paramsUrl += `${e.param}=${e.value}&`
-  })
+  // const paramsArray = this.processParamsObject(params)
+  // let paramsUrl:string = '?'
+  // paramsArray.forEach(e=>{
+  //   paramsUrl += `${e.param}=${e.value}&`
+  // })
 
-  return this.http.get<offer[]>(`${this.route}${paramsUrl}`, this.getOptions());
+  console.log(params)
+  return this.http.get<offer[]>(`${this.route}${params}`, this.getOptions());
 }
 
 postOffer(offer:offer){

@@ -1,10 +1,14 @@
 export interface user{
+
     id?:number;
+    password?:string;
+    username:string;
     name:string;
     surname:string;
-    password:string;
-    username:string;
-    career:string;
     birthdate:Date;
+    career:string;
+    active?:boolean;
+    updated_at?:Date;
+    description:string;
     img?:string;
 }

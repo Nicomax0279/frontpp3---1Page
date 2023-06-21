@@ -1,7 +1,8 @@
 .profile-container{
-    width: 1000px;
+    width: 600px;
     margin: auto;
-    background-color: aqua;
+    padding: 20px;
     display: flex;
     flex-direction: column;
+   
 }

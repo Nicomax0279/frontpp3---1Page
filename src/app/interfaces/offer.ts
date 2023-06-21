@@ -4,7 +4,7 @@ export interface offer{
     company:string;
     description:string;
     career:string;
-    updateDate:string;
+    updated_at:string;
     text?:string;
-    modality?:'presencial'|'hibrida'|"virtual"|"remoto";
+    modality?:'presencial'|'hibrida'|"remoto";
 }

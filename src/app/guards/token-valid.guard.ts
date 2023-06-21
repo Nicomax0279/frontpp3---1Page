@@ -18,31 +18,11 @@ export class TokenValidGuard implements CanActivate {
       
         let token = this._LocalStorageServiceService.getToken()
       
-      //console.log(body)
-      // fetch('http://localhost:8080/api/auth/verifies',{
-      //   body : JSON.stringify(body)
-      //   ,method : 'post'
-      // })
+      
       // @ts-ignore
       return this._AuthServiceService.validate(token)
       
-     //httppValidation
-      // return this._AuthServiceService.validate().pipe(
-      //   map(e=>{
-      //     console.log(e)
-      //     if(e){
-      //       return true
-      //     }else{
-      //       return
-      //     }
-      //   }),
-      //   ((err) => {
-      //     this.router.navigate(['/login']);
-      //     return of(false);
-      //   })
-      // ) 
      
-      //return true
     }else{
       this.router.navigate(["login"])
       return false
