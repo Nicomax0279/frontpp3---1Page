@@ -13,7 +13,7 @@
         <mat-grid-tile  [colspan]="5">
             <p>{{user?.description}}</p>
         </mat-grid-tile>
-        <mat-grid-tile  [colspan]="5" [rowspan]="2">
+        <mat-grid-tile  [colspan]="5" [rowspan]="2"  *ngIf="myProfile">
             <button mat-icon-button  (click)="updateUser()" >
                 <mat-icon>edit</mat-icon>
             </button>

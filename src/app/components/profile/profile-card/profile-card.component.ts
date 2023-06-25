@@ -11,6 +11,7 @@ import { UpdateDialogComponent } from '../update-dialog/update-dialog.component'
 })
 export class ProfileCardComponent {
   @Input() user ?: user
+  @Input() myProfile:boolean = false;
   @Output() updateUserEvent = new EventEmitter<user>();
 
   constructor(
@@ -25,8 +26,9 @@ export class ProfileCardComponent {
       position:{},
       
     })
-
+ 
     dialog.afterClosed().subscribe(res => {
+   
       if(res)this.updateUserEvent.emit(res)
     })
   }

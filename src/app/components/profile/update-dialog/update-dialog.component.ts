@@ -17,12 +17,14 @@ export class UpdateDialogComponent {
 
 
   update(){
-    
-    this.matDialogRef.close(this.userModel);
+    this.matDialogRef.close(this.user);
+  }
 
+  closeDialog(){
+    this.matDialogRef.close(undefined)
   }
 
   ngOnDestroy(){
-    this.matDialogRef.close()
+
   }
 }

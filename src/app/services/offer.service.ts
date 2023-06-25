@@ -72,7 +72,8 @@ getOffersParams(params:string) {
   //   paramsUrl += `${e.param}=${e.value}&`
   // })
 
-  console.log(params)
+  
+   params?params:params='';
   return this.http.get<offer[]>(`${this.route}${params}`, this.getOptions());
 }
 

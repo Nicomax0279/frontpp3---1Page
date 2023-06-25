@@ -21,7 +21,6 @@ export class ProfileComponent {
  
  }
  updateUser(userToUpdate:user){
-  
   this._userService.putMyUser(userToUpdate).subscribe({next:(res)=>{
     console.log(res)},error(err) {console.log(err)}})
  }
