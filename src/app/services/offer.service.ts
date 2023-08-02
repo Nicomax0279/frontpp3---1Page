@@ -3,6 +3,8 @@ import {HttpClient, HttpHeaders   } from '@angular/common/http'
 import {  Observable} from "rxjs";
 import {offer} from '../interfaces/offer'
 import { environment } from 'src/environments/environment';
+import { user } from '../interfaces/user';
+import { company } from '../interfaces/company';
 @Injectable({
   providedIn: 'root'
 })
@@ -52,7 +54,7 @@ getOptions() {
 }
 
 
-getOffers():Observable<offer[]> {
+getOffers():Observable<offer[]>{
   return this.http.get<offer[]>(this.route, this.getOptions());
 }
 
@@ -89,5 +91,14 @@ isSingupOffer(offerId:number){
 }
 getMySignupOffers(){
   return this.http.get<offer[]>(`${this.route}myOffers`, this.getOptions());
+}
+
+
+putOfferById(offerID:number,offer:offer):Observable<{Response:string}>{
+  return this.http.put<{Response:string}>(`${this.route}${offerID}`,offer, this.getOptions());
+}
+
+deleteOfferById(offerID:number):Observable<{Response:string}>{
+  return this.http.delete<{Response:string}>(`${this.route}${offerID}`, this.getOptions());
 }
 }

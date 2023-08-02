@@ -10,8 +10,8 @@ import { LocalStorageServiceService } from 'src/app/services/local-storage-servi
 })
 export class NavCompanyComponent {
   menu:Menu[] = [
-    {name:"HOME" , redirect:'/company'},
-    {name:"createOffer" , redirect:'/company/createOffer'}
+    {name:"Gestor " , redirect:'/company'},
+    {name:"CreateOffer" , redirect:'/company/createOffer'}
 ];
 constructor(private _LocalStorageServiceService:LocalStorageServiceService, private router:Router){
 

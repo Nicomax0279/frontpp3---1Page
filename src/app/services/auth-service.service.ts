@@ -16,6 +16,10 @@ export class AuthServiceService {
 
     return this.http.post(`${this.route}/login`,user)
   }
+  loginCompany(user:loginUser):Observable<any>{
+
+    return this.http.post(`${this.route}/loginCompany`,user)
+  }
   logout(user:loginUser):Observable<any>{
     return this.http.post(`${this.route}/logout`,user)
   }
@@ -23,8 +27,6 @@ export class AuthServiceService {
     return this.http.post(`${this.route}/signup`,user)
   }
   validate(token:string):Observable<boolean>{
-    //return this.http.post<boolean>(`${this.route}/verifies`, `Bearer ${token}`)
-    console.log("cambio en auth service")
     return this.http.post<boolean>(`${this.route}/verifies`, {token:`Bearer ${token}`})
   }
 }

@@ -1,0 +1,104 @@
+
+<div class="container">
+    <mat-toolbar >
+        <mat-toolbar-row>
+          <span>Gestor de Ofertas  </span>
+         
+          <div class="example-spacer"></div>
+         
+          <mat-slide-toggle color="primary" [checked]="true"  (change)="toggle($event)">mostrar  Resumen</mat-slide-toggle>
+          <div class="example-spacer"></div>
+          <button mat-raised-button color="primary" routerLink="/company/createOffer" >AGREGAR</button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <div *ngIf="offersList.length > 0">
+        <mat-form-field style=" width: 100%;">  
+            <input matInput  (input)="applyFilterGlobal($event, 'contains')" placeholder="Filter" #input>
+        </mat-form-field>
+        <div class="mat-elevation-z8">
+
+            <table mat-table [dataSource]="dataSource" matSort>
+  
+              <!-- ID Column -->
+              <ng-container matColumnDef="id" >
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                <td mat-cell *matCellDef="let row" [ngClass]="resume? 'td-id-resume' : 'td-id'"    > {{row.id}} </td>
+              </ng-container>
+          
+              <!-- Progress Column -->
+              <ng-container matColumnDef="title">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Titulo </th>
+                <td mat-cell *matCellDef="let row" [ngClass]="resume? 'td-title-resume' : 'td-title'"> {{row.title}}  </td>
+              </ng-container>
+              
+              <ng-container matColumnDef="career">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Carrera </th>
+                <td mat-cell *matCellDef="let row"  [ngClass]="resume? 'td-career-resume' : 'td-career'" > {{row.career}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="modality">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Modalidad </th>
+                <td mat-cell *matCellDef="let row" [ngClass]="resume? 'td-modality-resume' : 'td-modality'"> {{row.modality}} </td>
+              </ng-container>
+              
+              <ng-container matColumnDef="updated_at">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de actualización </th>
+                <td mat-cell *matCellDef="let row" [ngClass]="resume? 'td-updated_at-resume' : 'td-updated_at'"> {{row.updated_at | date:'short'}}  </td>
+              </ng-container>
+
+           
+
+              <ng-container matColumnDef="shortText">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Resumen </th>
+                <td mat-cell *matCellDef="let row" ngClass="td-shortText" > {{row.shortText.substring(0,25)}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="text">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Texto </th>
+                <td mat-cell *matCellDef="let row"  ngClass="td-text" style="font-size:  xx-small"> {{row.text.substring(0,50)}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="inscriptions">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Inscripciones </th>
+                <td mat-cell *matCellDef="let row" [ngClass]="resume? 'td-inscriptions-resume' : 'td-inscriptions'"><button style="width: 100%;" (click)="getUsers(row.id)">{{row.inscriptions}} <mat-icon>search</mat-icon></button>   </td>
+              </ng-container>
+              
+             
+              <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                <td mat-cell *matCellDef="let element ; let i = index" style="text-align: right;" [ngClass]="resume? 'td-actions-resume' : 'td-actions'"> 
+                  <a class="pointer" style="color: #1878b0;" matTooltip="ver oferta "(click)="lookOffer(element)">
+                    <mat-icon>search</mat-icon>
+                  </a>
+                  <a class="pointer" style="color: #1f516f;" matTooltip="editar oferta" [routerLink]="['/company/updateOffer', element.id]">
+                    <mat-icon>edit</mat-icon>
+                  </a>
+                  <a class="pointer" (click)="deleteOffer(element.id)" style="color: #e15634;" matTooltip="eliminar oferta">
+                    <mat-icon>delete</mat-icon>
+                  </a>
+    
+                </td>
+              </ng-container>
+            
+          
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          
+              <!-- Row shown when there is no matching data. -->
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No hay resultados con "{{input.value}}"</td>
+              </tr>
+            </table>
+          
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+            
+        </div>
+
+
+
+
+
+
+    </div>
+    <h2 *ngIf="offersList.length  == 0 "> no hay Offetar cargadas</h2>
+</div>

@@ -28,7 +28,6 @@ export class ProfileCardComponent {
     })
  
     dialog.afterClosed().subscribe(res => {
-   
       if(res)this.updateUserEvent.emit(res)
     })
   }

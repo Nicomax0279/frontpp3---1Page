@@ -1,0 +1,79 @@
+table {
+    width: 100%;
+    margin-top: 10px;
+  }
+td{
+    width: 30%;
+  }
+.pointer{
+    cursor: pointer;
+
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+.example-spacer{
+  flex: 1 1 auto;
+}
+
+.container{
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-top: 5px;
+}
+
+.td-id{
+    width: 5%;
+}
+.td-title{
+    width: 10%;
+    
+}
+.td-modality{
+    width: 5%;
+   
+}
+.td-updated_at{
+    width: 10%;
+}
+.td-shortText{
+    width: 25%;
+}
+.td-text{
+    width: 25%;
+}
+.td-inscriptions{
+   
+    width: 10%;
+}
+.td-actions{
+   
+    width: 10%;
+}
+
+
+.td-id-resume{
+   
+    width: 5%;
+}
+.td-title-resume{
+   
+    width: 20%;
+
+}
+.td-modality-resume{
+    width: 10%;
+   
+}
+.td-updated_at-resume{
+    width: 20%;
+}
+.td-inscriptions-resume{
+   
+    width: 20%;
+}
+.td-actions-resume{
+    width: 20%;
+    
+}

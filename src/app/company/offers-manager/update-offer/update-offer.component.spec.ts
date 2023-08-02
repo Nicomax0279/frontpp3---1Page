@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateOfferComponent } from './crate-offert.component';
+import { UpdateOfferComponent } from './update-offer.component';
 
-describe('CrateOffertComponent', () => {
-  let component: CreateOfferComponent;
-  let fixture: ComponentFixture<CreateOfferComponent>;
+describe('UpdateOfferComponent', () => {
+  let component: UpdateOfferComponent;
+  let fixture: ComponentFixture<UpdateOfferComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateOfferComponent ]
+      declarations: [ UpdateOfferComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CreateOfferComponent);
+    fixture = TestBed.createComponent(UpdateOfferComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

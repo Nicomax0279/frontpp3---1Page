@@ -22,8 +22,10 @@ export class ProfileComponent {
  }
  updateUser(userToUpdate:user){
   this._userService.putMyUser(userToUpdate).subscribe({next:(res)=>{
-    console.log(res)},error(err) {console.log(err)}})
- }
+    
+    },error(err) {console.log(err)}})
+    window.location.reload();
+  }
 
  ngOnDestroy(){
   if(this.sus){this.sus.unsubscribe()}

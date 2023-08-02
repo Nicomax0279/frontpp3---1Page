@@ -6,7 +6,7 @@ import { user } from '../../interfaces/user';
 import { LocalStorageServiceService } from '../../services/local-storage-service.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -20,7 +20,7 @@ export class SignupComponent {
   ]
 
     loading = false
-    constructor(private fb:FormBuilder ,private router:Router, private _authService:AuthServiceService , private _LocalStorageServiceService:LocalStorageServiceService){
+    constructor(private fb:FormBuilder ,private router:Router, private _authService:AuthServiceService , private _LocalStorageServiceService:LocalStorageServiceService , private _snackBar:MatSnackBar){
       this.form = this.fb.group({
         user: ["@itbeltran.com.ar" , [Validators.email,Validators.required]  ],
         password: ["" , Validators.required ],
@@ -37,8 +37,8 @@ export class SignupComponent {
       const singupUser:user ={
         username : this.form.value.user,
         password : this.form.value.password,
-        name : this.form.value.name,
-        surname : this.form.value.surname,
+        names : this.form.value.name,
+        surnames : this.form.value.surname,
         birthdate : this.form.value.birthdate,
         career : this.form.value.career,
         description: '' 
@@ -53,12 +53,24 @@ export class SignupComponent {
           this._LocalStorageServiceService.setUsername(singupUser.username)
           this.router.navigate(["main"])
         }else if(res.Response == "signup successfully"){
-          alert("Cuenta Registrada correctamente")
+          this._snackBar.open("usuario registrado", "",{
+            duration : 1500,
+            horizontalPosition:'center',
+            verticalPosition:"bottom"
+          })
+          this.router.navigate(["login"])
         }
         else{
-          alert("ocurrio un error");
+          this._snackBar.open("ocurrio un error", "",{
+            duration : 1500,
+            horizontalPosition:'center',
+            verticalPosition:"bottom"
+          })
         }
       },error(err:HttpErrorResponse) {
+          if(err.error == 'Error: this email is already registered'){
+            alert('ERROR este email ya esta registrado');
+          }
           console.log(err)
       },})}
     }

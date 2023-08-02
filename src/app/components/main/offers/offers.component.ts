@@ -20,7 +20,9 @@ export class OffersComponent {
   ngOnInit(){
     this._OfferService.getOffersParams(this.params).subscribe({
       next: (e)=> this.offers = e,
-      error: (error)=>console.log(error)  
+      error: (error)=>{
+      if(error.error = 'validation token error') {localStorage.removeItem('token'); window.location.reload()}
+      console.log(error)}  
     })
   }
  

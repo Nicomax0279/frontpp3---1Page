@@ -1,0 +1,21 @@
+
+.example-spacer{
+    flex: 1 1 auto;
+}
+.closeButton-container{
+    
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.spacer{
+    width: 60%;
+}
+.closeButton{
+    background-color: transparent; /* Establece el fondo transparente */
+    border: none; /* Elimina el borde */
+    padding: 0; /* Elimina el relleno (padding) del botón */
+    cursor: pointer; 
+    width: 40%;
+ 
+}

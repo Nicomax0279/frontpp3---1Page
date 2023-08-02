@@ -1,0 +1,42 @@
+<div class="body">
+    <form [formGroup]='form' (ngSubmit)="updateOffer()">
+        <mat-form-field class="ancho" appearance="fill" >
+            <mat-label>Title</mat-label>
+            <input matInput autocomplete="off" formControlName="title">
+        </mat-form-field>
+        <mat-form-field class="ancho" appearance="fill">
+            <mat-label>career</mat-label>
+            <mat-select  name="career" formControlName="career" >
+              <mat-option *ngFor="let career of careers" [value]="career">
+                {{career}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="ancho" appearance="fill">
+            <mat-label>modality</mat-label>
+            <mat-select  name="career" formControlName="modality" >
+              <mat-option *ngFor="let modality of modalities" [value]="modality">
+                {{modality}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="ancho" appearance="fill" >
+            <mat-label>shortText</mat-label>
+            <textarea matInput autocomplete="off" formControlName="shortText" maxlength="250"> </textarea>
+            <!-- <input matInput autocomplete="off" formControlName="description"> -->
+        </mat-form-field>
+        <mat-form-field class="ancho" appearance="fill" >
+            <mat-label>text</mat-label>
+    
+            <textarea matInput autocomplete="off" formControlName="text" maxlength="500"></textarea>
+    
+            <!-- <input matInput autocomplete="off" formControlName="text"> -->
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="primary" class="ancho button" [disabled]="form.invalid">Actualizar Oferta</button>
+       
+    
+    
+    
+    
+    </form>
+    </div>

@@ -19,6 +19,12 @@ import { CreateOfferComponent } from './company/CreateOffer/crate-offert.compone
 import { ImgNotFoundDirective } from './img-not-found.directive';
 import { UpdateDialogComponent } from './components/profile/update-dialog/update-dialog.component';
 import { CompanyMainComponent } from './company/company-main/company-main.component';
+import { CompanyLoginComponentComponent } from './company/company-login-component/company-login-component.component';
+import { OffersManagerComponent } from './company/offers-manager/offers-manager.component';
+import { InfoComponent } from './components/info/info.component';
+import { LookUserComponent } from './company/offers-manager/look-user/look-user.component';
+import { LookOfferDialogComponent } from './company/offers-manager/look-offer-dialog/look-offer-dialog.component';
+import { UpdateOfferComponent } from './company/offers-manager/update-offer/update-offer.component';
 
 
 @NgModule({
@@ -37,7 +43,13 @@ import { CompanyMainComponent } from './company/company-main/company-main.compon
     CreateOfferComponent,
     ImgNotFoundDirective,
     UpdateDialogComponent,
-    CompanyMainComponent
+    CompanyMainComponent,
+    CompanyLoginComponentComponent,
+    OffersManagerComponent,
+    InfoComponent,
+    LookUserComponent,
+    LookOfferDialogComponent,
+    UpdateOfferComponent
     
   ],
   imports: [

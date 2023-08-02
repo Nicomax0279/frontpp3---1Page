@@ -24,7 +24,7 @@ export class CreateOfferComponent {
       title: ["" , Validators.required ],
       career: ["" , Validators.required ],
       modality: ["" , Validators.required ],
-      description :  ["" , Validators.required ],
+      shortText :  ["" , Validators.required ],
       text :["" , Validators.required ]
     }) 
   }
