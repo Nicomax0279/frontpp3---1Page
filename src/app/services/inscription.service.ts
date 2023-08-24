@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { inscription } from '../interfaces/inscription';
 import { user } from '../interfaces/user';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +40,7 @@ export class InscriptionService {
   postInscription(offerID:number){
     return this.http.post<inscription>(this.route,{offerID:offerID}, this.getOptions());
   }
-  getUsers(offerID:number){
-    return this.http.get(`${this.route}${offerID}/users`, this.getOptions());
+  getUsers(offerID:number):Observable<user[]>{
+    return this.http.get<user[]>(`${this.route}${offerID}/users`, this.getOptions());
   }
 }

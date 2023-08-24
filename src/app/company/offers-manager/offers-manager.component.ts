@@ -30,7 +30,7 @@ export class OffersManagerComponent {
 displayedColumnsComplete: string[] = ["id",'title', 'career', 'modality',"updated_at",'shortText', "text",'inscriptions' ,'actions'];
 displayedColumnsResume: string[] = ["id",'title', 'career', 'modality',"updated_at",'inscriptions' ,'actions'];
 displayedColumns:string[] = this.displayedColumnsResume
-constructor(private _OfferService:OfferService  ,private _CompanyService:CompanyService, private _InscriptionService:InscriptionService,private _snackBar:MatSnackBar , private matDialog:MatDialog){
+constructor(private _OfferService:OfferService  ,private _CompanyService:CompanyService,private _snackBar:MatSnackBar , private matDialog:MatDialog){
   this.loadOffers();
 }
 toggle(event: MatSlideToggleChange) {
@@ -75,6 +75,7 @@ deleteOffer(id:number):void{
 
 }
 
+
 lookOffer(offer:offer):void{
  
   offer.name = this.company.name
@@ -96,13 +97,6 @@ applyFilterGlobal($event:any, stringVal:string) {
   this.dataSource.filter = text.trim().toLowerCase();
 }
 
-getUsers(offerID:number){
-  this.sus = this._InscriptionService.getUsers(offerID).subscribe({next(value) {
-    console.log(value)    
-  },error(error) {
-      console.log(error)
-  },})
-}
 
 async loadOffers(){
   const offer =  this._OfferService.getOffers()

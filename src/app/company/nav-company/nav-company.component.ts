@@ -21,6 +21,6 @@ logout(){
 
   
   this._LocalStorageServiceService.destroyToken()
-  this.router.navigate(["login"])
+  this.router.navigate(["companyLogin"])
 }
 }

@@ -25,6 +25,7 @@ import { InfoComponent } from './components/info/info.component';
 import { LookUserComponent } from './company/offers-manager/look-user/look-user.component';
 import { LookOfferDialogComponent } from './company/offers-manager/look-offer-dialog/look-offer-dialog.component';
 import { UpdateOfferComponent } from './company/offers-manager/update-offer/update-offer.component';
+import { LookInscriptionsComponent } from './company/offers-manager/look-inscriptions/look-inscriptions.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { UpdateOfferComponent } from './company/offers-manager/update-offer/upda
     InfoComponent,
     LookUserComponent,
     LookOfferDialogComponent,
-    UpdateOfferComponent
+    UpdateOfferComponent,
+    LookInscriptionsComponent
     
   ],
   imports: [

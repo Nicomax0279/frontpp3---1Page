@@ -22,7 +22,7 @@ export class UpdateOfferComponent {
 
 
   sus?:Subscription
-  constructor(private _Activatedroute:ActivatedRoute , private _OfferService:OfferService ,   private fb:FormBuilder, private router:Router){
+  constructor(private _ActivatedRoute:ActivatedRoute , private _OfferService:OfferService ,   private fb:FormBuilder, private router:Router){
     this.form = this.fb.group({
       title: ["" , Validators.required ],
       career: ["" , Validators.required ],
@@ -56,7 +56,7 @@ export class UpdateOfferComponent {
     })
   }
   ngOnInit(){
-    this.offerID = this._Activatedroute.snapshot.params["id"];
+    this.offerID = this._ActivatedRoute.snapshot.params["id"];
     this.sus = this._OfferService.getOffertById(this.offerID).subscribe(res=>{
         this.offer = res
         const {title , career ,shortText , modality , text  } = res

@@ -13,6 +13,7 @@ import { CompanyLoginComponentComponent } from './company/company-login-componen
 import { OffersManagerComponent } from './company/offers-manager/offers-manager.component';
 import { InfoComponent } from './components/info/info.component';
 import { UpdateOfferComponent } from './company/offers-manager/update-offer/update-offer.component';
+import { LookInscriptionsComponent } from './company/offers-manager/look-inscriptions/look-inscriptions.component';
 
 
 
@@ -32,7 +33,8 @@ const routes: Routes = [
 children:[
   {path:'' , component: OffersManagerComponent},
   {path:'createOffer' , component:CreateOfferComponent},
-  {path:'updateOffer/:id' , component:UpdateOfferComponent}
+  {path:'updateOffer/:id' , component:UpdateOfferComponent},
+  {path :'lookInscriptions/:id' , component:LookInscriptionsComponent}
 ]}]
 ;
 
