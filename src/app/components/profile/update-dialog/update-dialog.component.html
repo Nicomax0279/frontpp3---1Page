@@ -1,5 +1,6 @@
-<div class="body"></div>
-<form   (ngSubmit)="update()" [formGroup]="form">
+<div class="body">
+
+<form   (ngSubmit)="update()" [formGroup]="form" class="login">
 
       <mat-form-field class="ancho" appearance="fill">
        <mat-label>name</mat-label>
@@ -9,7 +10,7 @@
        <mat-label>surname</mat-label>
        <input matInput autocomplete="off" name="surnames"  formControlName="surnames">
      </mat-form-field>
-     <mat-form-field appearance="fill">
+     <mat-form-field appearance="fill" class="ancho" >
        <mat-label>Choose a date</mat-label>
        <input matInput [matDatepicker]="picker"  name="birthdate"  formControlName="birthdate">
        <mat-hint>MM/DD/YYYY</mat-hint>
@@ -20,12 +21,15 @@
        <mat-label>career</mat-label>
   
        <mat-select  name="career"    formControlName="career" >
-         <mat-option *ngFor="let career of careers" [value]="career">
-           {{career}}
+         <mat-option *ngFor="let career of careers" [value]="career.name">
+           {{career.name}}
          </mat-option>
        </mat-select>
      </mat-form-field>
      <br>
        <button type="submit" mat-raised-button color="primary" class="ancho button" >Guardar</button>
+       <button  mat-raised-button class="ancho button" (click)="closeDialog()" >Cancelar</button>
      </form>
-     <button  mat-raised-button class="ancho button" (click)="closeDialog()" >Cancelar</button>
+     
+     
+</div>

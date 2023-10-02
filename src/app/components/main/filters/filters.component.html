@@ -1,0 +1,46 @@
+
+<div *ngIf="!display">
+
+  <button  mat-flat-button  style="width: 100%;" (click)="display=true">  <p> Mostrar Filtros</p > </button>
+
+</div>
+<div *ngIf="display">
+  <button  mat-flat-button  style="width: 100%;" (click)="display=false">  <p> Ocultar Filtros</p > </button>
+
+  <form class="form"  [formGroup]="form" (ngSubmit)="filter()">
+    <div>
+      <mat-form-field appearance="fill" class="formField">
+        <mat-label>Carrera</mat-label>
+        <!-- <input matInput autocomplete="off" formControlName="career"> -->
+        <mat-select  name="career" formControlName="career" >
+          <mat-option *ngFor="let career of careers" [value]="career.name">
+            {{career.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="formField" appearance="fill"   >
+        <mat-label>Compañía</mat-label>
+        <input matInput  formControlName="companyName" type="text">
+      </mat-form-field>
+      <button type="submit" mat-raised-button color="primary" class="ancho button" [disabled]="form.invalid">Filtrar</button>
+
+    </div>
+
+    <div>
+      <mat-form-field appearance="fill" class="formField">
+        <mat-label>Modalidad</mat-label>
+        <!-- <input matInput autocomplete="off" formControlName="career"> -->
+        <mat-select  name="modality" formControlName="modality" >
+          <mat-option *ngFor="let modality  of modalities" [value]="modality">
+            {{modality}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="titleFormField" appearance="fill" >
+        <mat-label>Titulo</mat-label>
+        <input matInput  formControlName="title" type="text">
+      </mat-form-field>
+    </div>
+</form>
+
+</div>

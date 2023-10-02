@@ -1,0 +1,22 @@
+.body{
+  display: flex;
+  justify-content: center;
+  height: 96%;
+  align-items: center;
+  background-color: #f5f5f5;
+
+}
+.container{
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+.item{
+  width: 100%;
+  margin: auto;
+  max-width: 800px;
+  text-align: center;
+  background-color: aqua;
+}

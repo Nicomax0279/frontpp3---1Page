@@ -16,9 +16,10 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';  
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSortModule} from '@angular/material/sort';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 @NgModule({
   declarations: [],
   imports: [
@@ -42,8 +43,9 @@ import {MatSortModule} from '@angular/material/sort';
     MatTableModule,
     MatSlideToggleModule,
     MatTooltipModule,
-    MatSortModule
-    
+    MatSortModule,
+    MatButtonToggleModule
+
   ],
   exports:[
     MatFormFieldModule,
@@ -65,7 +67,8 @@ import {MatSortModule} from '@angular/material/sort';
     MatTableModule,
     MatSlideToggleModule,
     MatTooltipModule,
-    MatSortModule
+    MatSortModule,
+    MatButtonToggleModule
   ]
 })
 export class ShareModule { }

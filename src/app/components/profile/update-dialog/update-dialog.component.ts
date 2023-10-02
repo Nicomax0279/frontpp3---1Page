@@ -1,8 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { from } from 'rxjs';
+import { Subscription, from } from 'rxjs';
+import { career } from 'src/app/interfaces/career';
 import { user } from 'src/app/interfaces/user';
+import { CareerService } from 'src/app/services/career.service';
 
 @Component({
   selector: 'app-update-dialog',
@@ -11,8 +13,8 @@ import { user } from 'src/app/interfaces/user';
 })
 export class UpdateDialogComponent {
   form!:FormGroup;
-
-  constructor(@Inject(MAT_DIALOG_DATA) public user: user ,private fb:FormBuilder , private matDialogRef:MatDialogRef<UpdateDialogComponent>)
+  sus?:Subscription;
+  constructor(@Inject(MAT_DIALOG_DATA) public user: user ,private fb:FormBuilder , private matDialogRef:MatDialogRef<UpdateDialogComponent> , private _careerService:CareerService)
    {  this.form = this.fb.group({
     names: [user.names , Validators.required ],
     surnames: [user.surnames , Validators.required ],
@@ -20,10 +22,11 @@ export class UpdateDialogComponent {
     career :[user.career , Validators.required ]
   })  }
   userModel = this.user;
-  careers:string[] = [
-    'Analista de sistemas' , 'Emfermeria', 'Radiologia','Seguridad y Higiene', "Administracion de empresas"
-  ]
+  careers!:career[]
+  ngOnInit(){
+    this.sus = this._careerService.getCareers().subscribe(c=>this.careers=c)
 
+  }
 
   update(){
     this.matDialogRef.close(this.form.value);
@@ -33,4 +36,10 @@ export class UpdateDialogComponent {
     this.matDialogRef.close(undefined);
   }
 
+  ngOnDestroy(){
+    if(this.sus){
+      this.sus.unsubscribe()
+    }
+    
+  }
 }

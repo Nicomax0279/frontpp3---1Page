@@ -1,0 +1,21 @@
+<mat-toolbar color="primary" class="header" style="position: fixed">
+  <span routerLink="/" style="cursor: pointer;" >LookingFor</span>
+  <span class="example-spacer"></span>
+  <button mat-button routerLink="/login" class="InfoVarButton">
+    <p *ngIf="isScreenWideEnough()" class="button-text" >Ingresar como alumno</p>
+    <mat-icon *ngIf="!isScreenWideEnough()">people</mat-icon>
+  </button>
+
+  <span class="example-spacer"></span>
+
+  <button mat-button routerLink="/companyLogin" class="InfoVarButton">
+    <p *ngIf="isScreenWideEnough()" class="button-text" >Ingresar como compañía</p>
+    <mat-icon *ngIf="!isScreenWideEnough()">business</mat-icon>
+  </button>
+  <span class="example-spacer"></span>
+  <button mat-button routerLink="/code" class="InfoVarButton">
+    <p *ngIf="isScreenWideEnough()" class="button-text" >validación de códigos</p>
+    <mat-icon *ngIf="!isScreenWideEnough()">security</mat-icon>
+  </button>
+</mat-toolbar>
+

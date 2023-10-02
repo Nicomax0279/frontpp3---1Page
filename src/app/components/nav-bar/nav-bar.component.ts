@@ -13,17 +13,17 @@ import { LocalStorageServiceService } from 'src/app/services/local-storage-servi
 export class NavBarComponent {
 
   menu:Menu[] = [
-    {name:"HOME" , redirect:'/main'},
-    {name:"Profile" , redirect:'/main/profile'}
+    {name:"Inicio" , redirect:'/main'},
+    {name:"Perfil" , redirect:'/main/profile'}
 ];
- 
+
   constructor(private _LocalStorageServiceService:LocalStorageServiceService, private router:Router){
 
     // this.loadMenu()
   }
   logout(){
- 
-    
+
+
     this._LocalStorageServiceService.destroyToken()
     this.router.navigate(["login"])
   }

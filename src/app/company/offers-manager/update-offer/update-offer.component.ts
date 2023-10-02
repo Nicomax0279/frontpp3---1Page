@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, of } from 'rxjs';
+import { career } from 'src/app/interfaces/career';
 import { offer } from 'src/app/interfaces/offer';
+import { CareerService } from 'src/app/services/career.service';
 import { OfferService } from 'src/app/services/offer.service';
 
 @Component({
@@ -11,9 +13,7 @@ import { OfferService } from 'src/app/services/offer.service';
   styleUrls: ['./update-offer.component.css']
 })
 export class UpdateOfferComponent {
-  careers:string[] = [
-    'Analista de sistemas' , 'Emfermeria', 'Radiologia','Seguridad y Higiene', "Administracion de empresas"
-  ]
+  careers!:career[]
   modalities:string[]= ['presencial','hibrido',"remoto"]
 
   offerID!:number
@@ -22,7 +22,8 @@ export class UpdateOfferComponent {
 
 
   sus?:Subscription
-  constructor(private _ActivatedRoute:ActivatedRoute , private _OfferService:OfferService ,   private fb:FormBuilder, private router:Router){
+  sus2?:Subscription
+  constructor(private _ActivatedRoute:ActivatedRoute , private _OfferService:OfferService ,   private fb:FormBuilder, private router:Router , private _careerService:CareerService){
     this.form = this.fb.group({
       title: ["" , Validators.required ],
       career: ["" , Validators.required ],
@@ -32,22 +33,6 @@ export class UpdateOfferComponent {
     }) 
   }
  
-    // this.sus = this._OfferService.getOffertById(this.offerID).subscribe(res=>{
-    //   console.log(res)
-    //   this.offer = res
-    // },(error)=>console.log(error),()=>{
-    //   console.log(this.offer)
-    // this.form = this.fb.group({
-    //   title: [this.offer.title , Validators.required ],
-    //   career: [this.offer.career, Validators.required ],
-    //   modality: [this.offer.modality , Validators.required ],
-    //   shortText :  [this.offer.shortText , Validators.required ],
-    //   text :[this.offer.text , Validators.required ]
-    // })
-    // })
-  // }
- 
-
 
   updateOffer(){
     this._OfferService.putOfferById(this.offerID,this.form.value).subscribe((res)=>{
@@ -62,10 +47,14 @@ export class UpdateOfferComponent {
         const {title , career ,shortText , modality , text  } = res
         this.form.setValue({title:title,career:career,shortText:shortText,modality:modality,text:text})
       })
+      this.sus2 = this._careerService.getCareers().subscribe(c=>this.careers=c)
   }
   ngOnDestroy(){
     if(this.sus){
       this.sus.unsubscribe()
+    }
+    if(this.sus2){
+      this.sus2.unsubscribe()
     }
   }
   

@@ -27,7 +27,6 @@ export class LookInscriptionsComponent {
   }
 
   loadTable(users: user[]) {
-    console.log(users)
     this.dataSource = new MatTableDataSource(users);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

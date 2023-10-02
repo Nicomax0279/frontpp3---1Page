@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders   } from '@angular/common/http'
+import {HttpClient, HttpHeaders, HttpParams   } from '@angular/common/http'
 import {  Observable} from "rxjs";
 import {offer} from '../interfaces/offer'
 import { environment } from 'src/environments/environment';
 import { user } from '../interfaces/user';
 import { company } from '../interfaces/company';
+import { filters } from '../interfaces/body';
 @Injectable({
   providedIn: 'root'
 })
 export class OfferService {
   route = `${environment.BASEURL}/api/offer/`
-  
+
   constructor(private http:HttpClient){}
-  
+
 processParamsObject(paramsObject:any){
   const paramsArray = [];
 for (let param in paramsObject) {
@@ -29,7 +30,7 @@ return paramsArray
 
 
 getToken() {
-  
+
   let token =localStorage.getItem("token");
 
   if (token) {
@@ -41,12 +42,12 @@ getToken() {
 
 
 getOptions() {
-  
+
   let token = this.getToken();
 
-	
+
   let headers = new HttpHeaders({'Authorization': 'Bearer ' + token})
-  
+
   let options = {
     headers: headers
   };
@@ -65,7 +66,7 @@ getOffertById(id:number):Observable<offer> {
 }
 
 
-getOffersParams(params:string) {
+getOffersParams(filters:filters={career:'',companyName:'',modality:'',title:''}) {
 
 
   // const paramsArray = this.processParamsObject(params)
@@ -74,9 +75,14 @@ getOffersParams(params:string) {
   //   paramsUrl += `${e.param}=${e.value}&`
   // })
 
-  
-   params?params:params='';
-  return this.http.get<offer[]>(`${this.route}${params}`, this.getOptions());
+  let params = new HttpParams();
+  if(filters.career) params = params.append('career', filters.career);
+  if(filters.companyName)  params = params.append('companyName', filters.companyName);
+  if(filters.modality) params = params.append('modality', filters.modality);
+  if(filters.title) params = params.append('title', filters.title);
+
+
+  return this.http.get<offer[]>(`${this.route}`, {...this.getOptions(), params});
 }
 
 postOffer(offer:offer){

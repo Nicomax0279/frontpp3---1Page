@@ -1,39 +1,38 @@
-
-.example-spacer{
-    flex: 1 1 auto;
+.example-spacer {
+  flex: 1 1 auto;
 }
 
-.card{
-    width: 100%;
+.card {
+  width: 100%;
 }
-.cardInfo{
-    display: flex;
-    flex-direction: column;
-    
+.cardInfo {
+  display: flex;
+  flex-direction: column;
 }
-.descriptionText{
-    width: 90%;
-    height: 100%;
-    text-align: left;
+.descriptionText {
+  width: 90%;
+  height: 100%;
+  text-align: left;
 }
 a {
-    color: inherit; /* blue colors for links too */
-    text-decoration: inherit; /* no underline */
-  }
-.top{
-    padding: 1%;
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
 }
-.updateDate{
-    margin: auto;
-    margin-left: 10px;
+.top {
+  padding: 1%;
 }
-.career{
-    margin: auto;
-    margin-right: 10px;
+.updateDate {
+  margin: auto;
+  margin-left: 10px;
 }
-.text{
-    overflow: hidden; 
-    text-overflow: ellipsis;
+.career {
+  margin: auto;
+  margin-right: 10px;
 }
-   
-    
+.descriptionTextContainer{
+  width: 100%;
+}
+.text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,15 @@
+.example-spacer{
+    flex: 1 1 auto;
+}
+.InfoVarButton{
+  width: 50%;
+}
+.header{
+  position:fixed;
+  top:0;
+left:0;
+right:0;
+}
+.button-text{
+
+}

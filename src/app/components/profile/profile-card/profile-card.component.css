@@ -1,0 +1,13 @@
+.cardInfo {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.profileCard{
+  
+    width: 100%;
+    
+}
+.profileImg{
+    margin-top: 10px;
+}

@@ -7,20 +7,25 @@ import { LocalStorageServiceService } from '../../services/local-storage-service
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CareerService } from 'src/app/services/career.service';
+import { career } from 'src/app/interfaces/career';
+import { Snack2Component } from '../snack2/snack2.component';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
- 
-export class SignupComponent {
-  form!:FormGroup
-  careers:string[] = [
-    'Analista de sistemas' , 'Emfermeria', 'Radiologia','Seguridad y Higiene', "Administracion de empresas"
-  ]
 
+export class SignupComponent {
+  sus?:Subscription;
+  form!:FormGroup
+  careers!:career[]
+  ngOnInit(){
+    this.sus = this._careerService.getCareers().subscribe(c=>this.careers=c)
+
+  }
     loading = false
-    constructor(private fb:FormBuilder ,private router:Router, private _authService:AuthServiceService , private _LocalStorageServiceService:LocalStorageServiceService , private _snackBar:MatSnackBar){
+    constructor(private fb:FormBuilder ,private router:Router, private _authService:AuthServiceService , private _LocalStorageServiceService:LocalStorageServiceService , private _snackBar:MatSnackBar , private _careerService:CareerService){
       this.form = this.fb.group({
         user: ["@itbeltran.com.ar" , [Validators.email,Validators.required]  ],
         password: ["" , Validators.required ],
@@ -28,12 +33,31 @@ export class SignupComponent {
         surname: ["" , Validators.required ],
         birthdate :  ["" , Validators.required ],
         career :["" , Validators.required ]
-      }) 
-  
+      })
+
     }
- 
-    sus!:Subscription;
+    showSnack(message: string) {
+      this._snackBar.openFromComponent(Snack2Component, {
+        duration: 5000,
+        data: {
+          message: message,
+          config: {
+            iconType: 'icon',
+            iconValue: 'error',
+            type: 'error',
+            useImage: true,
+          },
+          preClose: () => {
+            this._snackBar.dismiss();
+          },
+        },
+      });
+    }
+
     singup(){
+      if(this.sus){
+        this.sus.unsubscribe()
+      }
       const singupUser:user ={
         username : this.form.value.user,
         password : this.form.value.password,
@@ -41,37 +65,46 @@ export class SignupComponent {
         surnames : this.form.value.surname,
         birthdate : this.form.value.birthdate,
         career : this.form.value.career,
-        description: '' 
+        description: ''
 
       }
       if(!this.validateEmail(singupUser.username)){
-        alert("the email must contain @itbeltran.com.ar")
+        this.showSnack("el email debe terminar con @itbeltran.com.ar")
       }else{
       this.sus = this._authService.signup(singupUser).subscribe({next: (res)=>{
+        console.log(res)
         if(res.token){
           this._LocalStorageServiceService.setToken(res.token)
           this._LocalStorageServiceService.setUsername(singupUser.username)
           this.router.navigate(["main"])
         }else if(res.Response == "signup successfully"){
-          this._snackBar.open("usuario registrado", "",{
-            duration : 1500,
-            horizontalPosition:'center',
-            verticalPosition:"bottom"
+          this._snackBar.openFromComponent(Snack2Component, {
+            duration: 5000,
+
+            data: {
+              message: 'Usuario registrado correctamente por favor active su cuenta via email',
+              config: {
+                iconType: 'icon',
+                iconValue: 'person_add',
+                type: 'successful',
+                useImage: true,
+              },
+              preClose: () => {
+                this._snackBar.dismiss();
+              },
+            },
           })
-          this.router.navigate(["login"])
+
         }
         else{
-          this._snackBar.open("ocurrio un error", "",{
-            duration : 1500,
-            horizontalPosition:'center',
-            verticalPosition:"bottom"
-          })
+          this.showSnack("ocurrió un error"
+          )
         }
-      },error(err:HttpErrorResponse) {
+      },error:(err:HttpErrorResponse)=>{
           if(err.error == 'Error: this email is already registered'){
-            alert('ERROR este email ya esta registrado');
+            this.showSnack('ERROR este email ya esta registrado');
           }
-          console.log(err)
+
       },})}
     }
     ngOnDestroy(){
@@ -79,9 +112,9 @@ export class SignupComponent {
         this.sus.unsubscribe()
       }
     }
-    validateEmail(email:String){   
+    validateEmail(email:String){
       var dominio = "@itbeltran.com.ar";
       return email.endsWith(dominio)
     }
   }
-  
+

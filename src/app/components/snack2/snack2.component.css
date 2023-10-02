@@ -1,0 +1,35 @@
+.error {
+  color: red;
+}
+.successful {
+  color: green;
+}
+.snack-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.ico-container {
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  margin: auto;
+}
+.ico{
+ margin: auto;
+ width: 100%;
+
+}
+.text {
+  width: 50%;
+
+}
+
+.text-no-img {
+  width: 80%;
+}
+
+.close {
+
+  width: 20%;
+}

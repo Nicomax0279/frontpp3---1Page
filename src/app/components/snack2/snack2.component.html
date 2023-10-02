@@ -1,0 +1,18 @@
+<div class="snack-container">
+  <div class="ico-container" *ngIf="config.useImage">
+    <mat-icon
+      [ngClass]="config.type == 'error' ? 'error' : 'successful'"
+      class="mat-18 "
+
+      *ngIf="config.iconType == 'icon'"
+      >{{ config.iconValue }}</mat-icon
+    >
+    <img *ngIf="config.iconType == 'img'" [src]="config.iconValue" />
+  </div>
+  <div [ngClass]="config.useImage ? 'text' : 'text-no-img'">
+    <p [ngClass]="config.type == 'error' ? 'error' : 'successful'">
+      {{ message }}
+    </p>
+  </div>
+  <button (click)="close()" class="close"><mat-icon>close</mat-icon></button>
+</div>

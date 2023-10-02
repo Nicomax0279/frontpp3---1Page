@@ -11,24 +11,36 @@ import { CreateOfferComponent } from './company/CreateOffer/crate-offert.compone
 import { CompanyMainComponent } from './company/company-main/company-main.component';
 import { CompanyLoginComponentComponent } from './company/company-login-component/company-login-component.component';
 import { OffersManagerComponent } from './company/offers-manager/offers-manager.component';
-import { InfoComponent } from './components/info/info.component';
 import { UpdateOfferComponent } from './company/offers-manager/update-offer/update-offer.component';
 import { LookInscriptionsComponent } from './company/offers-manager/look-inscriptions/look-inscriptions.component';
+import { RootComponent } from './components/root/root.component';
+import { InfoContentComponent } from './components/infoContent/infoContent.component';
+import { CodeValidationComponent } from './components/code-validation/code-validation.component';
 
 
 
 
 const routes: Routes = [
-  {path:'' ,  component:InfoComponent},
-  {path:'signup' , component:SignupComponent},
- {path:'login' , component:LoginComponent},
+  {path:'' ,  component:RootComponent, children:[
+    {path:'signup' , component:SignupComponent},
+    {path:'login' , component:LoginComponent},
+    {path:'' , component:InfoContentComponent},
+    {path:'code' , component:CodeValidationComponent},
+     {
+  path:'companyLogin' ,component:CompanyLoginComponentComponent
+ }
+  ]},
+//   {path:'signup' , component:SignupComponent},
+//  {path:'login' , component:LoginComponent},
  {path:'main', component:MainComponent, canActivate:[TokenValidGuard],
  children:[
   {path:'' , component:OffersComponent},
   {path:'profile', component:ProfileComponent}
- ]},{
-  path:'companyLogin' ,component:CompanyLoginComponentComponent
- },
+ ]},
+//  {
+//   path:'companyLogin' ,component:CompanyLoginComponentComponent
+//  },
+
 {path:'company', component:LayoutComponent , canActivate:[TokenValidGuard],
 children:[
   {path:'' , component: OffersManagerComponent},

@@ -12,6 +12,7 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { MatDialog } from '@angular/material/dialog';
 import { LookOfferDialogComponent } from './look-offer-dialog/look-offer-dialog.component';
 import { company } from 'src/app/interfaces/company';
+import { Snack2Component } from 'src/app/components/snack2/snack2.component';
 
 @Component({
   selector: 'app-offers-manager',
@@ -34,7 +35,7 @@ constructor(private _OfferService:OfferService  ,private _CompanyService:Company
   this.loadOffers();
 }
 toggle(event: MatSlideToggleChange) {
-  event.checked? this.displayedColumns = this.displayedColumnsResume :this.displayedColumns = this.displayedColumnsComplete 
+  event.checked? this.displayedColumns = this.displayedColumnsResume :this.displayedColumns = this.displayedColumnsComplete
   this.resume = event.checked
 }
 
@@ -47,7 +48,7 @@ ngOnInit() {
      // Use MatTableDataSource for paginator
     //@ts-ignore
     this.dataSource = new MatTableDataSource(res);
-  
+
     // Assign the paginator *after* dataSource is set
      this.dataSource.paginator = this.paginator;
      this.dataSource.sort = this.sort;
@@ -62,12 +63,21 @@ ngOnInit() {
 
 deleteOffer(id:number):void{
   this.sus = this._OfferService.deleteOfferById(id).subscribe(res=>{
-    if(res.Response == 'offer deleted successfully' ){ this._snackBar.open("oferta eliminada", "",{
-      duration : 1500,
-      horizontalPosition:'center',
-      verticalPosition:"bottom"
-      
-    
+    if(res.Response == 'offer deleted successfully' ){   this._snackBar.openFromComponent(Snack2Component, {
+      duration: 5000,
+
+      data: {
+        message: 'Oferta eliminada correctamente',
+        config: {
+          iconType: 'icon',
+          iconValue: 'delete',
+          type: 'successful',
+          useImage: true,
+        },
+        preClose: () => {
+          this._snackBar.dismiss();
+        },
+      },
     })
     this.loadOffers()
   }
@@ -77,7 +87,7 @@ deleteOffer(id:number):void{
 
 
 lookOffer(offer:offer):void{
- 
+
   offer.name = this.company.name
   offer.logo = this.company.logo
 
@@ -86,7 +96,7 @@ lookOffer(offer:offer):void{
     width : "50%",
     height: "50%",
     position:{},
-    
+
   })
 }
 

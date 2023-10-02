@@ -7,8 +7,8 @@
         <mat-form-field class="ancho" appearance="fill">
             <mat-label>career</mat-label>
             <mat-select  name="career" formControlName="career" >
-              <mat-option *ngFor="let career of careers" [value]="career">
-                {{career}}
+              <mat-option *ngFor="let career of careers" [value]="career.name">
+                {{career.name}}
               </mat-option>
             </mat-select>
           </mat-form-field>

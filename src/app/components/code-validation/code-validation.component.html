@@ -1,0 +1,58 @@
+<div class="body">
+  <div class="form">
+    <mat-button-toggle-group [(ngModel)]="mode" style="width: 100%">
+      <mat-button-toggle value="activateAccount" style="width: 50%"
+        >Activar cuenta</mat-button-toggle
+      >
+      <mat-button-toggle value="changePassword" style="width: 50%"
+        >Cambiar contraseña</mat-button-toggle
+      >
+    </mat-button-toggle-group>
+    <form (submit)="use()" [formGroup]="form">
+      <mat-form-field class="ancho" appearance="fill">
+        <mat-label>email</mat-label>
+        <input
+          matInput
+          autocomplete="off"
+          formControlName="username"
+          type="email"
+        />
+      </mat-form-field>
+      <mat-form-field class="ancho" appearance="fill">
+        <mat-label>Cogido de validación</mat-label>
+        <input matInput autocomplete="off" formControlName="code" />
+      </mat-form-field>
+      <mat-form-field
+        *ngIf="mode == 'changePassword'"
+        class="ancho"
+        appearance="fill"
+      >
+        <mat-label>contraseña</mat-label>
+        <input
+          matInput
+          autocomplete="off"
+          formControlName="password"
+          type="password"
+        />
+      </mat-form-field>
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        class="ancho button"
+        [disabled]="form.invalid"
+      >
+        {{ modeText()}}
+      </button>
+
+    </form>
+    <button
+        mat-raised-button
+        color="accent"
+        class="button"
+        (click)="generateCode()"
+      >
+      Generar Código
+      </button>
+  </div>
+</div>

@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input , Output} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { user } from 'src/app/interfaces/user';
-import { UserService } from 'src/app/services/user.service';
 import { UpdateDialogComponent } from '../update-dialog/update-dialog.component';
 
 @Component({
@@ -17,16 +16,19 @@ export class ProfileCardComponent {
   constructor(
     private matDialog:MatDialog
   ){}
-    
+
   updateUser(){
     let dialog  = this.matDialog.open(UpdateDialogComponent,{
       data : this.user,
-      width : "50%",
-      height: "50%",
+      width : "100%",
+      height: "100%",
+      maxHeight: '500px',
+      maxWidth: '500px',
+      backdropClass: '.color',
       position:{},
-      
+
     })
- 
+
     dialog.afterClosed().subscribe(res => {
       if(res)this.updateUserEvent.emit(res)
     })

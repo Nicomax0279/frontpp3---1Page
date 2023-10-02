@@ -21,11 +21,16 @@ import { UpdateDialogComponent } from './components/profile/update-dialog/update
 import { CompanyMainComponent } from './company/company-main/company-main.component';
 import { CompanyLoginComponentComponent } from './company/company-login-component/company-login-component.component';
 import { OffersManagerComponent } from './company/offers-manager/offers-manager.component';
-import { InfoComponent } from './components/info/info.component';
 import { LookUserComponent } from './company/offers-manager/look-user/look-user.component';
 import { LookOfferDialogComponent } from './company/offers-manager/look-offer-dialog/look-offer-dialog.component';
 import { UpdateOfferComponent } from './company/offers-manager/update-offer/update-offer.component';
 import { LookInscriptionsComponent } from './company/offers-manager/look-inscriptions/look-inscriptions.component';
+import { FiltersComponent } from './components/main/filters/filters.component';
+import { InfoContentComponent } from './components/infoContent/infoContent.component';
+import { basicNavBarComponent } from './components/basic-nav-bar/basic-nav-bar.component';
+import { RootComponent } from './components/root/root.component';
+import { CodeValidationComponent } from './components/code-validation/code-validation.component';
+import { Snack2Component } from './components/snack2/snack2.component';
 
 
 @NgModule({
@@ -47,12 +52,18 @@ import { LookInscriptionsComponent } from './company/offers-manager/look-inscrip
     CompanyMainComponent,
     CompanyLoginComponentComponent,
     OffersManagerComponent,
-    InfoComponent,
     LookUserComponent,
     LookOfferDialogComponent,
     UpdateOfferComponent,
-    LookInscriptionsComponent
-    
+    LookInscriptionsComponent,
+    FiltersComponent,
+    InfoContentComponent,
+    basicNavBarComponent,
+    RootComponent,
+    CodeValidationComponent,
+    Snack2Component
+
+
   ],
   imports: [
     BrowserModule,

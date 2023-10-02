@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient   } from '@angular/common/http'
+import {HttpClient, HttpParams   } from '@angular/common/http'
 import {  Observable} from "rxjs";
 import { loginUser } from '../interfaces/loginUser';
 import { user } from "../interfaces/user";
@@ -29,4 +29,25 @@ export class AuthServiceService {
   validate(token:string):Observable<boolean>{
     return this.http.post<boolean>(`${this.route}/verifies`, {token:`Bearer ${token}`})
   }
+
+  activateAccount(code:string,username:string):Observable<boolean>{
+    let params = new HttpParams();
+    if(code) params = params.append('code', code);
+    if(username)  params = params.append('username', username);
+    return this.http.post<boolean>(`${this.route}/activateUser`,{},{params})
+  }
+  changePassword(code:string,username:string,password:string):Observable<boolean>{
+    let params = new HttpParams();
+    if(code) params = params.append('code', code);
+    if(username)  params = params.append('username', username);
+    if(password)  params = params.append('password', password);
+    return this.http.post<boolean>(`${this.route}/changePassword`,{},{params})
+  }
+
+  generateCode(username:string):Observable<boolean>{
+    let params = new HttpParams();
+    if(username)  params = params.append('username', username);
+    return this.http.post<boolean>(`${this.route}/generateCode`,{},{params})
+  }
 }
+

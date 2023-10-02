@@ -9,21 +9,24 @@
     <mat-grid-tile [colspan]="3" [rowspan]="4">
         <mat-card-title-group class="cardInfo">
             <mat-card-title>{{offer.title}}</mat-card-title>
-            <mat-card-subtitle><a href="#">{{offer.name}}</a></mat-card-subtitle>
+            <mat-card-subtitle><a>{{offer.name}}</a></mat-card-subtitle>
             <mat-card-subtitle><p>{{offer.modality}}</p></mat-card-subtitle>
         </mat-card-title-group>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="5" [rowspan]="2">
-        <mat-card-content class="descriptionText">
-          <p class="text">  {{offer.shortText}}</p>
+    <mat-grid-tile [colspan]="5" [rowspan]="shortTextRowspan" >
+        <mat-card-content class="descriptionTextContainer">
+          <div class="descriptionText" #descriptionText>
+            <p class="text">  {{offer.shortText}}</p>
+          </div>
+
           </mat-card-content>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="5" [rowspan]="1" >
-        <mat-card-actions *ngIf="!showMore" style="width: 100% ;">
-            <button mat-raised-button  color="primary" style="width: 100%;" (click)="showMore=true">Ver Mas</button>            
+    <mat-grid-tile *ngIf="!showMore" [colspan]="5" [rowspan]="1" >
+        <mat-card-actions  style="width: 100% ;">
+            <button mat-raised-button  color="primary" style="width: 100%;" (click)="showMore=true">Ver Mas</button>
         </mat-card-actions>
     </mat-grid-tile>
-    
+
 </mat-grid-list>
 <!-- <mat-grid-list *ngIf="showMore" cols="5"  rowHeight="25px"> -->
     <div *ngIf="showMore">
@@ -34,11 +37,11 @@
     <!-- </mat-grid-tile> -->
     <!-- <mat-grid-tile [colspan]="5" [rowspan]="2"> -->
     <mat-card-actions>
-        <button mat-raised-button  color="green" (click)="showMore=false">Ocultar</button>
-        <button mat-raised-button  color="primary" (click)="signupOffert()" [disabled]="BrockButton">Anotarme</button>    
+        <button mat-raised-button   (click)="showMore=false">Ocultar</button>
+        <button mat-raised-button  color="primary" (click)="signupOffer()" [disabled]="BrockButton" >{{offer.isInscribed == 1 ? 'ya esta inscrito' : 'inscribirme'}}</button>
     </mat-card-actions>
     <!-- </mat-grid-tile> -->
-</div>           
+</div>
 <!-- </mat-grid-list> -->
 
 
