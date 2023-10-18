@@ -18,7 +18,7 @@ import { NavCompanyComponent } from './company/nav-company/nav-company.component
 import { CreateOfferComponent } from './company/CreateOffer/crate-offert.component';
 import { ImgNotFoundDirective } from './img-not-found.directive';
 import { UpdateDialogComponent } from './components/profile/update-dialog/update-dialog.component';
-import { CompanyMainComponent } from './company/company-main/company-main.component';
+
 import { CompanyLoginComponentComponent } from './company/company-login-component/company-login-component.component';
 import { OffersManagerComponent } from './company/offers-manager/offers-manager.component';
 import { LookUserComponent } from './company/offers-manager/look-user/look-user.component';
@@ -49,7 +49,6 @@ import { Snack2Component } from './components/snack2/snack2.component';
     CreateOfferComponent,
     ImgNotFoundDirective,
     UpdateDialogComponent,
-    CompanyMainComponent,
     CompanyLoginComponentComponent,
     OffersManagerComponent,
     LookUserComponent,

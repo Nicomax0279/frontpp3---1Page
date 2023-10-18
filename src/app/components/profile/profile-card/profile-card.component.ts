@@ -12,11 +12,20 @@ export class ProfileCardComponent {
   @Input() user ?: user
   @Input() myProfile:boolean = false;
   @Output() updateUserEvent = new EventEmitter<user>();
-
+  img:string = ''
   constructor(
     private matDialog:MatDialog
-  ){}
+  ){
 
+  }
+  ngOnChanges(){
+    if(this.user){
+      // this.img = `https://ui-avatars.com/api/?name=${this.user?.names}+${this.user?.surnames}&background=0D8ABC&color=fff&size=128`
+      this.img = `https://ui-avatars.com/api/?name=${this.user?.names}+${this.user?.surnames}&background=random&color=fff&size=128`
+    }
+
+
+  }
   updateUser(){
     let dialog  = this.matDialog.open(UpdateDialogComponent,{
       data : this.user,

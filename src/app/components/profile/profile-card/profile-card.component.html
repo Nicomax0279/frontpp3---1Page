@@ -1,7 +1,7 @@
 <mat-card class="profileCard" >
     <mat-grid-list  cols="5"  rowHeight="25px" class="top">
         <mat-grid-tile [colspan]="5" [rowspan]="4" class="profileImg">
-            <img mat-card-md-image appImgNotFound src={{user?.img}}  alt="Image of a Shiba Inu">
+            <img mat-card-md-image appImgNotFound='dsa' src={{img}}  alt="Image of a Shiba Inu">
         </mat-grid-tile>
         <mat-grid-tile [colspan]="5" [rowspan]="4">
             <mat-card-title-group class="cardInfo">
@@ -14,10 +14,10 @@
             <p>{{user?.description}}</p>
         </mat-grid-tile>
         <mat-grid-tile  [colspan]="5" [rowspan]="2"  *ngIf="myProfile">
-            <button mat-icon-button  (click)="updateUser()" >
+            <button mat-icon-button  (click)="updateUser()" matTooltip="Editar" >
                 <mat-icon>edit</mat-icon>
             </button>
-            
+
         </mat-grid-tile>
 
 
@@ -33,5 +33,5 @@
 
 
 
-    
+
 </mat-card>

@@ -8,7 +8,6 @@ import { TokenValidGuard } from './guards/token-valid.guard';
 import { ProfileComponent } from './components/profile/profile.component';
 import { LayoutComponent } from './company/layout/layout.component';
 import { CreateOfferComponent } from './company/CreateOffer/crate-offert.component';
-import { CompanyMainComponent } from './company/company-main/company-main.component';
 import { CompanyLoginComponentComponent } from './company/company-login-component/company-login-component.component';
 import { OffersManagerComponent } from './company/offers-manager/offers-manager.component';
 import { UpdateOfferComponent } from './company/offers-manager/update-offer/update-offer.component';

@@ -11,7 +11,7 @@ import { LocalStorageServiceService } from 'src/app/services/local-storage-servi
 export class NavCompanyComponent {
   menu:Menu[] = [
     {name:"Gestor " , redirect:'/company'},
-    {name:"CreateOffer" , redirect:'/company/createOffer'}
+    {name:"Nueva oferta" , redirect:'/company/createOffer'}
 ];
 constructor(private _LocalStorageServiceService:LocalStorageServiceService, private router:Router){
 
@@ -19,7 +19,7 @@ constructor(private _LocalStorageServiceService:LocalStorageServiceService, priv
 }
 logout(){
 
-  
+
   this._LocalStorageServiceService.destroyToken()
   this.router.navigate(["companyLogin"])
 }
